@@ -18,7 +18,7 @@ from start_end_logging.start_end_logging import log_start, log_end, init_logging
 log = logging.getLogger(__name__)
 
 if __name__ == "__main__":
-    init_logging("../logs", "coplanar.log")
+    init_logging("../logs", "log.log")
     log_start("main process", log)
     log_start("preparing something", log)
     time.sleep(0.15)
