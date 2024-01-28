@@ -7,7 +7,7 @@ elapsed time.
 
 ```pip install start-end-logging``` or ```poetry add start-end-logging```
 
-## Example
+## Usage
 
 ```
 import logging
