@@ -9,7 +9,7 @@ LogEntry = namedtuple("LogEntry", ["message", "start_time", "logger"])  # Contai
 log_stack = deque()  # Stack where the log-entries are collected.
 
 
-def log_start(message: str, logger: logging) -> None:
+def log_start(message, logger):
     """Logs the start of a process step.
 
     Args:
@@ -20,7 +20,7 @@ def log_start(message: str, logger: logging) -> None:
     logger.info("({}) start {}.".format(len(log_stack), message))
 
 
-def log_end(additional_message: str = None) -> None:
+def log_end(additional_message=None):
     """Logs the end of a process step together with the start message and the time elapsed.
 
     Args:
@@ -35,7 +35,7 @@ def log_end(additional_message: str = None) -> None:
     log_entry.logger.info(log_message)
 
 
-def init_logging(directory: str, file_name: str, log_level: str = logging.INFO) -> None:
+def init_logging(directory, file_name, log_level=logging.INFO):
     """Initializes the logger for the project.
 
     Args:
@@ -56,7 +56,7 @@ def init_logging(directory: str, file_name: str, log_level: str = logging.INFO) 
     logger.addHandler(file_handler)
 
 
-def seconds_to_hhmmssms(seconds: float) -> str:
+def seconds_to_hhmmssms(seconds):
     """Parses the number of seconds after midnight and returns the corresponding HH:MM:SS.f-string.
 
     Args:
@@ -69,4 +69,4 @@ def seconds_to_hhmmssms(seconds: float) -> str:
     ms = round((seconds - int_seconds) * 1000)
     m, s = divmod(int_seconds, 60)
     h, m = divmod(m, 60)
-    return "{:02d}:{:02d}:{:02d}.{:03d}".format(h, m, s, ms)
+    return "{:02d}:{:02d}:{:02d}.{:03d}".format(int(h), int(m), int(s), int(ms))
