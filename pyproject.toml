@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "start-end-logging"
-version = "0.1.5"
+version = "0.1.6"
 description = "A very simple logging library that logs the start and end of a process step and, in particular, indicates the elapsed time."
 authors = ["Johannes Lieberherr <johannes.lieberherr@ttools.ch>"]
 readme = "README.md"

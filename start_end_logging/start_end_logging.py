@@ -42,6 +42,10 @@ def init_logging(directory, file_name, log_level=logging.INFO):
         directory (str): Path to the folder where the log file is written.
         file_name (str): Name of the log file.
         log_level (int): log level
+
+    Returns:
+        stdout_handler (logging.StreamHandler): the added sys.stdout handler
+        file_handler (logging.FileHandler): the added file handler
     """
     logger = logging.getLogger()
     logger.level = log_level
@@ -54,6 +58,7 @@ def init_logging(directory, file_name, log_level=logging.INFO):
     file_handler.setFormatter(formatter)
     logger.addHandler(stdout_handler)
     logger.addHandler(file_handler)
+    return stdout_handler, file_handler
 
 
 def seconds_to_hhmmssms(seconds):
