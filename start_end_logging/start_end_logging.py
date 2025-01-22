@@ -35,19 +35,21 @@ def log_end(additional_message=None):
     log_entry.logger.info(log_message)
 
 
-def init_logging(directory, file_name, log_level=logging.INFO):
+def init_logging(directory, file_name, name="", log_level=logging.INFO):
     """Initializes the logger for the project.
 
     Args:
         directory (str): Path to the folder where the log file is written.
         file_name (str): Name of the log file.
-        log_level (int): log level
+        name (str, optional): Name of the log file.
+        log_level (int, optional): log level
 
     Returns:
+        logger (logging.Logger): logger for the project.
         stdout_handler (logging.StreamHandler): the added sys.stdout handler
         file_handler (logging.FileHandler): the added file handler
     """
-    logger = logging.getLogger()
+    logger = logging.getLogger(name=name)
     logger.level = log_level
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     stdout_handler = logging.StreamHandler(sys.stdout)
@@ -58,7 +60,7 @@ def init_logging(directory, file_name, log_level=logging.INFO):
     file_handler.setFormatter(formatter)
     logger.addHandler(stdout_handler)
     logger.addHandler(file_handler)
-    return stdout_handler, file_handler
+    return logger, stdout_handler, file_handler
 
 
 def seconds_to_hhmmssms(seconds):
